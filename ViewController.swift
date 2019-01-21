@@ -10,10 +10,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        
+
         //Program for count of given string from file.
         print(readRTFFile(givenValue: "Cow"))
 
@@ -22,6 +19,13 @@ class ViewController: UIViewController {
         
         //Program for reverse a string in n/2 order
         print(reverseString(value: "souvik"))
+        
+        //Program to check palindrom
+        if StringReversePalindromCheck(value: "madama"){
+            print("It is plaindrom")
+        }else{
+            print("Not a palindrom")
+        }
     }
     
     // Mark :- Program for count of given string from file.
@@ -36,15 +40,13 @@ class ViewController: UIViewController {
                 for item in array{
                     if item == givenValue{
                         count += 1
-                    }
-                    
+                    }   
                 }
             } catch let error {
                 print("Got an error \(error)")
             }
         }
-        return count
-        
+        return count     
     }
     
    
@@ -70,6 +72,19 @@ class ViewController: UIViewController {
         }
         return reverseItem + value.suffix(array.count/2)
     }
-   
+    
+    
+    //Check Palindrom
+    func StringReversePalindromCheck(value : String) -> Bool{
+        var reverseValue : String = ""
+    for char in value{
+        reverseValue = "\(char)" + reverseValue
+    }
+        if reverseValue == value{
+            return true
+        }else{
+            return false
+        }
+    }  
 }
 
