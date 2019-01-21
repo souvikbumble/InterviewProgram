@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         
         
         
-        // Mark :- Program for count of given string from file.
+        //Program for count of given string from file.
         print(readRTFFile(givenValue: "Cow"))
 
         //Program for remove dublicate value from array
@@ -24,8 +24,8 @@ class ViewController: UIViewController {
         print(reverseString(value: "souvik"))
     }
     
-    
-    func readRTFFile(givenValue : String) -> Int{
+    // Mark :- Program for count of given string from file.
+    func readFile(givenValue : String) -> Int{
         var count = 0
         if let rtfPath = Bundle.main.url(forResource: "hello", withExtension: "rtf") {
             do {
@@ -48,44 +48,28 @@ class ViewController: UIViewController {
     }
     
    
-    func uniqueElementsFrom(array: [String]) -> [String] {
-        //Create an empty Set to track unique items
+    func RemoveDublicateFrom(array: [String]) -> [String] {
         var set = Set<String>()
         let result = array.filter {
             guard !set.contains($0) else {
-                //If the set already contains this object, return false
-                //so we skip it
                 return false
             }
-            //Add this item to the set since it will now be in the array
             set.insert($0)
-            //Return true so that filtered array will contain this item.
             return true
         }
 
         return result
     }
     
-    
+    //Reverse string in n/2 complixity
     func reverseString(value : String) -> String {
         var reverseItem : String = ""
-        //Create empty string
         let array = Array(value)
-        //Convert string to array
         for index in 0..<(array.count/2){
             reverseItem = "\(array[index])" + reverseItem
         }
-        //Store reverse item n/2 complixity
-
-        
         return reverseItem + value.suffix(array.count/2)
     }
-    
-    
-    @IBAction func actionResult(_ sender: Any) {
-        print(self.reverseString(value: "BumbleBee1"))
-    }
-    
-    
+   
 }
 
